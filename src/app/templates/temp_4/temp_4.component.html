@@ -1,0 +1,574 @@
+<div *ngIf="!hideSideMenu">
+  <section class="edit" id="print" style="margin-bottom: 20px;">
+    <div class="cv-container">
+  <div class="left-column">
+  <div style="margin-top:0 ;margin-left: 0;">
+    <img class="" style=" height: 300px; width: 250px; " [src]="url ? url : 'https://www.codeur.com/tuto/wp-content/uploads/2022/01/MG_0110-4-293x300.jpg'"/>  
+  </div>
+  <div style="margin: 20px;;">
+    
+    <div>
+      <div style="margin-top:20px ;border-bottom-style: solid;">
+        <p><i class="icon fa fa-user-circle" aria-hidden="true"></i><strong>{{model.Age}} ans,{{model.sf}}</strong></p>
+        <p><i class="icon fa fa-map-marker" aria-hidden="true"></i><strong>{{model.Adresse}},{{model.Ville}}</strong> </p>
+        
+        <p><i class="icon fa fa-phone-square" aria-hidden="true"></i><strong>{{model.Tel}}</strong></p>
+        <p><i class="icon fa fa-envelope" aria-hidden="true"></i><strong>{{model.Email}}</strong></p>
+      </div>
+      <div style="border-bottom-style: solid;">
+        <h4 style="margin-top: 20px;" ><i class="icon fa fa-laptop" aria-hidden="true"></i>Informatique</h4>
+        <section style="margin-left: 20px;" >
+          <ul class="" *ngFor="let aliases4 of aliases4.value; let i=index">
+            <li><strong>{{aliases4.informatique}}</strong></li>
+            
+            </ul>
+        </section>
+       
+      </div>
+      <h4 style="margin-top: 20px;"><i class="icon fa fa-language" aria-hidden="true"></i>Langue</h4>  
+      <div style="margin-top:10px ;margin-bottom: 10px;display: inline-block;" *ngFor="let aliases3 of aliases3.value; let i=index">
+        <p><strong>{{aliases3.langue}} :</strong></p>
+        <div class="rate"  >
+          <input type="radio" id="star5-{{i}}" name="rate-{{i}}" value="5" />
+          <label for="star5-{{i}}" >5 stars</label>
+          <input type="radio" id="star4-{{i}}" name="rate-{{i}}" value="4" />
+          <label for="star4-{{i}}" >4 stars</label>
+          <input type="radio" id="star3-{{i}}" name="rate-{{i}}" value="3" />
+          <label for="star3-{{i}}" >3 stars</label>
+          <input type="radio" id="star2-{{i}}" name="rate-{{i}}" value="2" />
+          <label for="star2-{{i}}" >2 stars</label>
+          <input type="radio" id="star1-{{i}}" name="rate-{{i}}" value="1" />
+          <label for="star1-{{i}}" >1 star</label>
+    
+    </div>
+    
+    </div>
+              
+    </div>
+  </div>
+  </div>
+  <div class="right-column">
+  <div style="height: 100px; justify-content: center;">
+    <h3 style="text-align:center ;margin-top:25px">{{model.name}} {{model.LastName}} </h3>
+    
+    <div style="background-color: #F8C471;margin:10px ;">
+      <h5 style="margin:10px ;margin-top: 20px;" >À propos de moi</h5>  
+      <p style="margin:10px ;"><strong>{{model.Description}}</strong></p>
+    </div>
+    
+  </div>
+  <div 
+            >
+             <h4 style=" margin-left: 15px;margin-top: 40%;">Formation</h4> 
+             <section style="margin-left: 20px;">
+              <div *ngFor="let aliases of aliases.value; let i=index"  >
+                <p style="margin-bottom: 5px;"><strong>{{aliases.dad}}-->{{aliases.daf}}</strong></p>
+                <p><strong>{{aliases.formation}}</strong></p>
+                
+              </div>
+             </section> 
+            
+            </div>
+           
+             <div>
+              <h4 style=" margin-left: 15px;" >Compétences</h4>
+              <section style="margin-left: 20px;" >
+                <ul class="" *ngFor="let aliases2 of aliases2.value; let i=index">
+                  <li style="margin-left: 20px;"><strong>{{aliases2.competence}}</strong></li>
+                  
+                  </ul>
+              </section>
+             
+            </div>
+            <div>
+              <h4 style="margin-left: 15px;">Expériences</h4> 
+              <section >
+                <div style="margin-left: 20px;" *ngFor="let aliases1 of aliases1.value; let i=index"  >
+                  <p style="margin-bottom: 5px;"><strong>{{aliases1.dade | date:'MMM y '}}->{{aliases1.dafe | date:'MMM y'}} :</strong> </p>
+                  <p><strong>{{aliases1.experience}}</strong></p>
+                </div>
+                
+                 </section>
+                
+             </div> 
+  </div>
+    </div>
+  </section>
+  <section style="margin-top: 20px;">
+    <ng-scrollbar style="height: 300px;">
+      <form [formGroup]="CvForm" class="form" >
+        <label class="label">Informations personnelles</label>
+        <div class="formControl">
+          <input type='file' (change)="onSelectFile($event)" formControlName="image"   >
+        </div>
+        <div class="formControl">
+          <input [value]="model.name"
+          (input)="model.name=getValue($event)" class="imput" formControlName="name" 
+          placeholder="Prénom">
+        </div>
+        <div class="formControl">
+          <input [value]="model.LastName"
+          (input)="model.LastName=getValue($event)" class="imput" formControlName="LastName"  placeholder="Nom">
+        </div>
+        <div class="formControl">
+        
+          <textarea style="
+          height: 100px;
+          padding: 10px;
+          outline: 0;
+        
+          background: #d0e2bc;
+          line-height: 20px; " maxlength="200" rows="7" cols="50" [value]="model.Description" (input)="model.Description=getValue($event)" class="imput" formControlName="Description"  placeholder="Description">
+            Enter text here...</textarea>
+        </div>
+        <div class="formControl">
+          <input [value]="model.Age"
+          (input)="model.Age=getValue($event)" class="imput" formControlName="Age"  placeholder="Age">
+        </div>
+       
+        <div class="formControl">
+          <input [value]="model.Tel"
+          (input)="model.Tel=getValue($event)" class="imput" formControlName="Tel"  placeholder="Tel">
+        </div>
+        <div class="formControl">
+          <input [value]="model.Email"
+          (input)="model.Email=getValue($event)" class="imput" formControlName="Email"  placeholder="Email">
+        </div>
+        <div class="formControl">
+          <input [value]="model.Adresse"
+          (input)="model.Adresse=getValue($event)" class="imput" formControlName="Adresse"  placeholder="Adresse">
+        </div>
+        <div  class="formControl">
+          <input [value]="model.Ville"
+          (input)="model.Ville=getValue($event)" class="imput" formControlName="Ville"  placeholder="Ville">
+        </div>
+        <div class="formControl">
+          <label for="sf">Situation familière:</label>
+          <select id="sf" [value]="model.sf"
+          (input)="model.sf=getValue($event)">
+            
+            <option value="Marié">Marié</option> 
+            <option value="Mariée">Mariée</option>
+            <option value="Célibataire" selected>Célibataire</option>
+          </select>
+        </div>
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Informatique</label></div>
+            <div class="col"> <button class="boton" (click)="addAlias4()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+         
+        </div>
+        <div formArrayName="aliases4" style="margin-top: 10px;margin-right: 20px"   >
+          <div *ngFor="let newAlias4 of aliases4.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="Informatique-{{i}}">Informatique</label><br>
+               <input id="Informatique-{{i}}"  style="width: 90%;" type="text" formControlName="informatique"  >
+               <button type="button" (click)="getValue5(i)" class="btn btn-dark" >  supprimer</button>
+               
+            
+            </div>
+          </div>
+        </div>
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Formation</label></div>
+            <div class="col"><button class="boton"  (click)="addAlias()"><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+          
+        </div>
+        
+          <div formArrayName="aliases" style="margin-top: 10px;margin-right: 20px"   >
+            <div *ngFor="let newAlias of aliases.controls; let i=index">
+              <div [formGroupName]="i"  class="formation">
+               
+                <label for="Formation-{{i}}">Formation</label><br>
+                 <input  id="formation-{{i}}"  style="width: 90%;" type="text" formControlName="formation"   
+                 (change)="model.formation"      >
+                <label for="dad-{{i}}">Année de début de formation</label><br>
+                 <input id="dad-{{i}}" type="number" min="1980" formControlName="dad"  (change)="model.dad"   ><br>
+          <label for="daf-{{i}}">Année de la fin de formation</label><br>
+                 <input  id="daf-{{i}}"  type="number" min="1980"  formControlName="daf"  (change)="model.daf"   ><br>
+    <button type="button" (click)="getValue1(i)" class="btn btn-dark" >  supprimer</button>
+  
+    
+              </div>
+            </div>
+          </div>
+    
+     
+       
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Compétence</label></div>
+            <div class="col"> <button class="boton" (click)="addAlias2()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+         
+        </div>
+        <div formArrayName="aliases2" style="margin-top: 10px;margin-right: 20px"   >
+          <div *ngFor="let newAlias2 of aliases2.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="Competence-{{i}}">Compétence</label><br>
+               <input id="Competence-{{i}}"  style="width: 90%;" type="text" formControlName="competence"  >
+               <button type="button" (click)="getValue3(i)" class="btn btn-dark" >  supprimer</button>
+               
+            
+            </div>
+          </div>
+        </div>
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label for="">Expérience professionnelle</label></div>
+            <div class="col"> <button class="boton" (click)=" addAlias1() " ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+         
+        </div>
+        <div formArrayName="aliases1" style="margin-top: 10px; margin-right: 20px;"   >
+          <div *ngFor="let newAlias1 of aliases1.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="experience-{{i}}">Expérience</label><br>
+               <input id="experience-{{i}}"  style="width: 90%;" type="text" formControlName="experience"  (change)="model.experience"  >
+              <label for="dade-{{i}}">Date de début d'expérience</label><br>
+               <input id="dade-{{i}}" type="date" formControlName="dade"  (change)="model.dade"   ><br>
+        <label for="dafe-{{ i }}">Date de la fin d'expérience</label><br>
+               <input id="dafe-{{ i }}"  type="date"  formControlName="dafe"  (change)="model.dafe"   ><br>
+               <button type="button" (click)="getValue2(i)" class="btn btn-dark" >  supprimer</button>
+              
+            </div>
+          </div>
+        </div>
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label for="">Langue</label></div>
+            <div class="col"> <button class="boton" (click)=" addAlias3()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div >
+         
+        </div >
+        <div formArrayName="aliases3" style="margin-top: 10px;margin-right: 20px"class=""  >
+          <div *ngFor="let newAlias3 of aliases3.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+             
+              <label for="langue-{{ i }}">Langue</label><br>
+               <input id="langue-{{ i }}"   type="text" formControlName="langue" (change)="model.langue"   ><br>
+              
+             
+        
+            
+               <button type="button" (click)="getValue4(i)" class="btn btn-dark " >  supprimer</button>
+            
+            </div>
+          </div>
+        </div>
+       
+        </form> 
+   
+      </ng-scrollbar>  
+  </section><br>
+  <div style="margin: auto;">
+    <button type="button" class="btn btn-primary btn-lg"(click)="printAll()">Télécharger</button>
+  </div>
+  
+</div>
+
+<div *ngIf="hideSideMenu">
+  <section style="margin-top: 20px;">
+    
+      <form [formGroup]="CvForm" class="" >
+        <label style="font: 1.2em sans-serif;margin-left: 10px;" class="">Informations personnelles</label>
+        <div class="formControl-mobile">
+          <input type='file' (change)="onSelectFile($event)" formControlName="image"   >
+        </div>
+        <div class="formControl-mobile">
+          <input [value]="model.name"
+          (input)="model.name=getValue($event)" class="imput" formControlName="name" 
+          placeholder="Prénom">
+        </div>
+        <div class="formControl-mobile">
+          <input [value]="model.LastName"
+          (input)="model.LastName=getValue($event)" class="imput" formControlName="LastName"  placeholder="Nom">
+        </div>
+        <div class="formControl-mobile">
+        
+          <textarea style="
+          height: 100px;
+          padding: 10px;
+          outline: 0;
+        
+          background: #d0e2bc;
+          line-height: 20px; " maxlength="200" rows="7" cols="50" [value]="model.Description" (input)="model.Description=getValue($event)" class="imput" formControlName="Description"  placeholder="Description">
+            Enter text here...</textarea>
+        </div>
+        <div class="formControl-mobile">
+          <input [value]="model.Age"
+          (input)="model.Age=getValue($event)" class="imput" formControlName="Age"  placeholder="Age">
+        </div>
+       
+        <div class="formControl-mobile">
+          <input [value]="model.Tel"
+          (input)="model.Tel=getValue($event)" class="imput" formControlName="Tel"  placeholder="Tel">
+        </div>
+        <div class="formControl-mobile">
+          <input [value]="model.Email"
+          (input)="model.Email=getValue($event)" class="imput" formControlName="Email"  placeholder="Email">
+        </div>
+        <div class="formControl-mobile">
+          <input [value]="model.Adresse"
+          (input)="model.Adresse=getValue($event)" class="imput" formControlName="Adresse"  placeholder="Adresse">
+        </div>
+        <div  class="formControl-mobile">
+          <input [value]="model.Ville"
+          (input)="model.Ville=getValue($event)" class="imput" formControlName="Ville"  placeholder="Ville">
+        </div>
+        <div class="formControl-mobile">
+          <label for="sf">Situation familière:</label>
+          <select id="sf" [value]="model.sf"
+          (input)="model.sf=getValue($event)">
+            
+            <option value="Marié">Marié</option> 
+            <option value="Mariée">Mariée</option>
+            <option value="Célibataire" selected>Célibataire</option>
+          </select>
+        </div>
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Informatique</label></div>
+            <div class="col"> <button class="boton" (click)="addAlias4()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+         
+        </div>
+        <div formArrayName="aliases4" style="margin-top: 10px;margin-right: 20px"   >
+          <div *ngFor="let newAlias4 of aliases4.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="Informatique-{{i}}">Informatique</label><br>
+               <input id="Informatique-{{i}}"  style="width: 90%;" type="text" formControlName="informatique"  >
+               <button type="button" (click)="getValue5(i)" class="btn btn-dark" >  supprimer</button>
+               
+            
+            </div>
+          </div>
+        </div>
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Formation</label></div>
+            <div class="col"><button class="boton"  (click)="addAlias()"><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+          
+        </div>
+        
+          <div formArrayName="aliases" style="margin-top: 10px;margin-right: 20px"   >
+            <div *ngFor="let newAlias of aliases.controls; let i=index">
+              <div [formGroupName]="i"  class="formation">
+               
+                <label for="Formation-{{i}}">Formation</label><br>
+                 <input  id="formation-{{i}}"  style="width: 90%;" type="text" formControlName="formation"   
+                 (change)="model.formation"      >
+                <label for="dad-{{i}}">Année de début de formation</label><br>
+                 <input id="dad-{{i}}" type="number" min="1980" formControlName="dad"  (change)="model.dad"   ><br>
+          <label for="daf-{{i}}">Année de la fin de formation</label><br>
+                 <input  id="daf-{{i}}"  type="number" min="1980"  formControlName="daf"  (change)="model.daf"   ><br>
+    <button type="button" (click)="getValue1(i)" class="btn btn-dark" >  supprimer</button>
+  
+    
+              </div>
+            </div>
+          </div>
+    
+     
+       
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label >Compétence</label></div>
+            <div class="col"> <button class="boton" (click)="addAlias2()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+          
+         
+        </div>
+        <div formArrayName="aliases2" style="margin-top: 10px;margin-right: 20px"   >
+          <div *ngFor="let newAlias2 of aliases2.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="Competence-{{i}}">Compétence</label><br>
+               <input id="Competence-{{i}}"  style="width: 90%;" type="text" formControlName="competence"  >
+               <button type="button" (click)="getValue3(i)" class="btn btn-dark" >  supprimer</button>
+               
+            
+            </div>
+          </div>
+        </div>
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label for="">Expérience professionnelle</label></div>
+            <div class="col"> <button class="boton" (click)=" addAlias1() " ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div>
+         
+        </div>
+        <div formArrayName="aliases1" style="margin-top: 10px; margin-right: 20px;"   >
+          <div *ngFor="let newAlias1 of aliases1.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+            
+              <label for="experience-{{i}}">Expérience</label><br>
+               <input id="experience-{{i}}"  style="width: 90%;" type="text" formControlName="experience"  (change)="model.experience"  >
+              <label for="dade-{{i}}">Date de début d'expérience</label><br>
+               <input id="dade-{{i}}" type="date" formControlName="dade"  (change)="model.dade"   ><br>
+        <label for="dafe-{{ i }}">Date de la fin d'expérience</label><br>
+               <input id="dafe-{{ i }}"  type="date"  formControlName="dafe"  (change)="model.dafe"   ><br>
+               <button type="button" (click)="getValue2(i)" class="btn btn-dark" >  supprimer</button>
+              
+            </div>
+          </div>
+        </div>
+  
+        <div class="div">
+          <div class="row">
+            <div class="col"><label for="">Langue</label></div>
+            <div class="col"> <button class="boton" (click)=" addAlias3()" ><i class="fa fa-plus" style="font-size:24px;padding: 5px;"></i></button></div>
+          </div >
+         
+        </div >
+        <div formArrayName="aliases3" style="margin-top: 10px;margin-right: 20px"class=""  >
+          <div *ngFor="let newAlias3 of aliases3.controls; let i=index"  >
+            <div [formGroupName]="i" class="formation">
+             
+              <label for="langue-{{ i }}">Langue</label><br>
+               <input id="langue-{{ i }}"   type="text" formControlName="langue" (change)="model.langue"   ><br>
+              
+             
+        
+            
+               <button type="button" (click)="getValue4(i)" class="btn btn-dark " >  supprimer</button>
+            
+            </div>
+          </div>
+        </div>
+       
+        </form> 
+   
+        
+  </section><br>
+  <div class="container-sm">
+   
+    <details>
+      <summary>
+        <span class="icon"><i class="fa fa-search" aria-hidden="true" style="font-size:48px;;border-style:groove"></i>APERCU</span>
+        
+      </summary>
+      <section class="" style="zoom: 70%;" id="print" >
+    
+    <div class="cv-container">
+  <div class="left-column">
+  <div style="margin-top:0 ;margin-left: 0;">
+    <img class="" style=" height: 300px; width: 250px; " [src]="url ? url : 'https://www.codeur.com/tuto/wp-content/uploads/2022/01/MG_0110-4-293x300.jpg'"/>  
+  </div>
+  <div style="margin: 20px;;">
+    
+    <div>
+      <div style="margin-top:20px ;border-bottom-style: solid;">
+        <p><i class="icon fa fa-user-circle" aria-hidden="true"></i><strong>{{model.Age}} ans,{{model.sf}}</strong></p>
+        <p><i class="icon fa fa-map-marker" aria-hidden="true"></i><strong>{{model.Adresse}},{{model.Ville}}</strong> </p>
+        
+        <p><i class="icon fa fa-phone-square" aria-hidden="true"></i><strong>{{model.Tel}}</strong></p>
+        <p><i class="icon fa fa-envelope" aria-hidden="true"></i><strong>{{model.Email}}</strong></p>
+      </div>
+      <div style="border-bottom-style: solid;">
+        <h4 style="margin-top: 20px;" ><i class="icon fa fa-laptop" aria-hidden="true"></i>Informatique</h4>
+        <section style="margin-left: 20px;" >
+          <ul class="" *ngFor="let aliases4 of aliases4.value; let i=index">
+            <li><strong>{{aliases4.informatique}}</strong></li>
+            
+            </ul>
+        </section>
+       
+      </div>
+      <h4 style="margin-top: 20px;"><i class="icon fa fa-language" aria-hidden="true"></i>Langue</h4>  
+      <div style="margin-top:10px ;margin-bottom: 10px;display: inline-block;" *ngFor="let aliases3 of aliases3.value; let i=index">
+        <p><strong>{{aliases3.langue}} :</strong></p>
+        <div class="rate"  >
+          <input type="radio" id="star5-{{i}}" name="rate-{{i}}" value="5" />
+          <label for="star5-{{i}}" >5 stars</label>
+          <input type="radio" id="star4-{{i}}" name="rate-{{i}}" value="4" />
+          <label for="star4-{{i}}" >4 stars</label>
+          <input type="radio" id="star3-{{i}}" name="rate-{{i}}" value="3" />
+          <label for="star3-{{i}}" >3 stars</label>
+          <input type="radio" id="star2-{{i}}" name="rate-{{i}}" value="2" />
+          <label for="star2-{{i}}" >2 stars</label>
+          <input type="radio" id="star1-{{i}}" name="rate-{{i}}" value="1" />
+          <label for="star1-{{i}}" >1 star</label>
+    
+    </div>
+    
+    </div>
+              
+    </div>
+  </div>
+  </div>
+  <div class="right-column">
+  <div style="height: 100px; justify-content: center;">
+    <h3 style="text-align:center ;margin-top:25px">{{model.name}} {{model.LastName}} </h3>
+    
+    <div style="background-color: #F8C471;margin:10px ;">
+      <h5 style="margin:10px ;margin-top: 20px;" >À propos de moi</h5>  
+      <p style="margin:10px ;"><strong>{{model.Description}}</strong></p>
+    </div>
+    
+  </div>
+  <div 
+            >
+             <h4 style=" margin-left: 15px;margin-top: 40%;">Formation</h4> 
+             <section style="margin-left: 20px;">
+              <div *ngFor="let aliases of aliases.value; let i=index"  >
+                <p style="margin-bottom: 5px;"><strong>{{aliases.dad}}-->{{aliases.daf}}</strong></p>
+                <p><strong>{{aliases.formation}}</strong></p>
+                
+              </div>
+             </section> 
+            
+            </div>
+           
+             <div>
+              <h4 style=" margin-left: 15px;" >Compétences</h4>
+              <section style="margin-left: 20px;" >
+                <ul class="" *ngFor="let aliases2 of aliases2.value; let i=index">
+                  <li style="margin-left: 20px;"><strong>{{aliases2.competence}}</strong></li>
+                  
+                  </ul>
+              </section>
+             
+            </div>
+            <div>
+              <h4 style="margin-left: 15px;">Expériences</h4> 
+              <section >
+                <div style="margin-left: 20px;" *ngFor="let aliases1 of aliases1.value; let i=index"  >
+                  <p style="margin-bottom: 5px;"><strong>{{aliases1.dade | date:'MMM y '}}->{{aliases1.dafe | date:'MMM y'}} :</strong> </p>
+                  <p><strong>{{aliases1.experience}}</strong></p>
+                </div>
+                
+                 </section>
+                
+             </div> 
+  </div>
+    </div>
+  
+      </section>
+    </details>
+    
+
+        
+  </div>
+  <div style="margin-bottom:20px;text-align: center;">
+    <button type="button" class="btn btn-primary btn-lg"(click)="printAll()">Télécharger</button>
+  </div>
+</div>

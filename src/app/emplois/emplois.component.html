@@ -1,0 +1,31 @@
+<form [formGroup]="PreForm" style="margin-top: 20px;">
+    <label for="name">Nom Complet:</label>
+    <input type="text" id="name" formControlName="name" [value]="model.name" (input)="model.name=getValue($event)" placeholder="Entrez votre nom">
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" formControlName="age" [value]="model.age" (input)="model.age=getValue($event)" placeholder="Entrez votre age">
+
+    <label for="formation1">Formation N°1:</label>
+    <input type="text" id="formation1" formControlName="formation1" [value]="model.formation1" (input)="model.formation1=getValue($event)" placeholder="Entrez formation">
+
+    <label for="formation2">Formation N°2:</label>
+    <input type="text" id="formation2" formControlName="formation2" [value]="model.formation2" (input)="model.formation2=getValue($event)" placeholder="Entrez votre formation">
+
+    <label for="formation3">Formation N°3:</label>
+    <input type="text" id="formation3" formControlName="formation3" [value]="model.formation3" (input)="model.formation3=getValue($event)" placeholder="Entrez votre formation">
+
+    <label for="experience1">Expérience N°1:</label>
+    <input type="text" id="experience1" formControlName="experience1" [value]="model.experience1" (input)="model.experience1=getValue($event)" placeholder="Entrez votre expérience">
+
+    <label for="experience2">Expérience N°2:</label>
+    <input type="text" id="experience2" formControlName="experience2" [value]="model.experience2" (input)="model.experience2=getValue($event)" placeholder="Entrez votre expérience">
+
+    <label for="experience3">Expérience N°3:</label>
+    <input type="text" id="experience3" formControlName="experience3" [value]="model.experience3" (input)="model.experience3=getValue($event)" placeholder="Entrez votre expérience">
+
+    <input type="submit" value="Envoyer" (click)="id()">
+</form>
+<div>
+    <p id="model1">nom:{{model.name}}, age :{{model.age}},formation:{{model.formation1}} ,{{model.formation2}},{{model.formation3}}
+       expérience :{{model.experience1}},{{model.experience2}},{{model.experience3}}  donnez moi une brev présentation pour moi  en utilisant ces informations</p>
+</div>
